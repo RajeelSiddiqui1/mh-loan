@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: var(--color-primary);
+  --color-primary-dark: var(--color-primary-dark);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-light: var(--color-secondary-light);
+  --color-background: var(--color-background);
+  --color-surface: var(--color-surface);
+  --color-surface-hover: var(--color-surface-hover);
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
+  --color-border: var(--color-border);
+}
+
+@layer base {
+  :root {
+    --color-primary: #0A2540;
+    /* Ultra Deep Premium Trust Navy */
+    --color-primary-dark: #07192C;
+    --color-secondary: #D4AF37;
+    /* Rich Gold */
+    --color-secondary-light: #F3E5AB;
+    --color-background: #F4F7F9;
+    /* Off-white with a hint of blue */
+    --color-surface: #FFFFFF;
+    --color-surface-hover: #F8FAFC;
+    --color-text: #1E293B;
+    /* Deep Slate */
+    --color-text-muted: #64748B;
+    --color-border: #E2E8F0;
+  }
+
+  .dark {
+    --color-primary: #00E5FF;
+    /* Vibrant Cyan/Electric Blue for dark mode pop */
+    --color-primary-dark: #00B8D4;
+    --color-secondary: #FFD700;
+    /* Bright Gold */
+    --color-secondary-light: #FFEE58;
+    --color-background: #0B0F19;
+    /* High-end very dark blue/charcoal */
+    --color-surface: #131B2C;
+    /* Slightly lighter surface */
+    --color-surface-hover: #1E293B;
+    --color-text: #F8FAFC;
+    --color-text-muted: #94A3B8;
+    --color-border: #1E293B;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-text transition-colors duration-300 antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply backdrop-blur-lg bg-white/70 dark:bg-[#131B2C]/70 border border-white/40 dark:border-white/10 shadow-[0_8px_32px_0_rgba(31, 38, 135, 0.07)];
+  }
+
+  .glass-card {
+    @apply backdrop-blur-md bg-surface border border-border/60 shadow-[0_4px_24px_-8px_rgba(0, 0, 0, 0.1)] dark:shadow-[0_4px_24px_-8px_rgba(0, 0, 0, 0.5)] hover:shadow-xl transition-all duration-300;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-blue-600 to-secondary;
+  }
+
+  .dark .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-cyan-400 to-secondary;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
